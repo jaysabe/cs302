@@ -13,19 +13,48 @@ class Bot(User):
         return "Did you know that Honey never spoils??"
     
     '''Return a dictionary with event details'''
-    def see_events_script(self, event_name: str, event_time: datetime)-> dict:
-        return {"name": event_name, "time": event_time}
+    def see_topics_script(self, topic_name: str, current_time: datetime)-> dict:
+        return {"name": topic_name, "time": current_time}
     
-    def run_script(self, script: str)-> None:
+    def run_script(self, script: str, role: dict[str,bool]):
+        """
+        Executes a script based on the user's role.
+
+        Args:
+            script (str): The command entered by the user.
+            role (dict[str, bool]): A dictionary containing role flags like 'isStudent' and 'isAdmin'.
+        """
         script = script.lower()
-        match(script):
+
+        match script:
+            # General commands for all users
             case "/q":
-                print('Exiting bot.')
-                exit
+                print("Exiting bot.")
+                exit()
             case "/fact":
                 print(self.post_fun_fact_script())
             case "/v_nlog":
                 print(self.view_new_user_script())
+
+            # Commands for registered student users
+            case "/join_channel":
+                if role.get("isStudent", False):
+                    print(f"{role.username} Joined the channel!")
+                else:
+                    print("Permission denied: Only students can join channels.")
+
+        # Admin commands
+            case "/admin":
+                if script in role:
+                    if role.get("isAdmin", True):
+                        print(role[script])
+                    else:
+                        print("Permission denied: Admin use only.")
+
+        # Invalid command handler
+            case _:
+                print(f"Unknown command: {script}")
+                
     
     '''TODO THIS WILL CALL A METHOD IN BST Log and return all users who joined the server this session.'''
     def view_new_user_script(self, user_info: dict) -> str:

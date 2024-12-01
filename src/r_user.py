@@ -5,6 +5,12 @@ class RegisteredUser(User):
         super().__init__(username, userid)
         self.__is_student = is_student
         self._selected_channels = []
+    
+    def post(self, msg: str)->str:
+        pass
+        
+        
+        
         
     def __iadd__(self, channel_name: str):
         # Adds user to channel, TODO += op makes this happen
