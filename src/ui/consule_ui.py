@@ -1,8 +1,8 @@
 # main py 
-from user import User 
-from r_user import RegisteredUser
-from admin import Admin
-from bot import Bot
+from logic.user import User 
+from logic.r_user import RegisteredUser
+from logic.admin import Admin
+from logic.bot import Bot
 from art import *
 
 class ConsoleUI:
@@ -84,8 +84,8 @@ class ConsoleUI:
             
             - Admin
                 - Create a channel
-                - Audit User (Requires BST check)
-                - 
+                - Audit User (menu to interact with BST) (Requires BST check)
+                - post in channel
             
             -Bot 
                 - Post a Fun fact
