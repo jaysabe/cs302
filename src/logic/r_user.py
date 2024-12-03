@@ -11,14 +11,20 @@ class RegisteredUser(User):
         Posts a message to a channel the user has joined.
 
         Args:
-            msg (str): The message to post.
-            channel_name (str): The channel to post the message in.
+        msg (str): The message to post.
+        channel_name (str): The channel to post the message in.
         """
+        # Find the channel object by its name (you may need to use lookup to get the actual channel)
         channel = Channel.lookup(channel_name)
+
+        # Check if the channel exists and if the user has joined it
         if channel and channel in self.get_joined_channels():
+            # Add the message to the channel's list of posts
+            channel.add_post(msg)  # Ensure that the Channel class has an add_post() method
             print(f"[{self.username}] in [{channel.get_title()}]: {msg}")
         else:
             print(f"You must join the channel '{channel_name}' before posting.")
+
 
     def react(self, comment_id: int, reaction: str) -> None:
         """

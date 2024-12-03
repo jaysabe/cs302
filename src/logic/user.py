@@ -58,6 +58,11 @@ class User:
         """
         return [channel.get_title() for channel in self.__joined_channels]
 
+    def get_channel_posts(self, channel_name):
+        # Return the list of posts for a specific channel
+        channel = next((ch for ch in self.__joined_channels if ch.get_title() == channel_name), None)
+        return channel.get_posts() if channel else []
+
     def __str__(self):
         return f"User(username='{self.username}', user_id={self.user_id})"
     

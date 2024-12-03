@@ -1,6 +1,6 @@
 # Black box setup for Project 4 Specification
-import sys
-import os
+# import sys
+# import os
 # print("sys.path:", sys.path)
 
 from src.logic.admin import Admin
@@ -50,15 +50,15 @@ def test_user_initialization(test_user: User):
 #     assert len(channels) >= 0  # Ensure it's a list (even if empty)
 
 # # # Level 3: Feature implementation tests
-# def test_user_join_channel(test_user: User):
-#     test_user.join_channel("General")
-#     assert "General" in test_user.get_joined_channels()
+def test_user_join_channel(test_user: User):
+    test_user.join_channel("General")
+    assert "General" in test_user.get_joined_channels()
 
 # # Level 4: System tests
-# def test_user_system_operations(test_user: User):
-#     test_user.join_channel("General")
-#     test_user.leave_channel("General")
-#     assert "General" not in test_user.get_joined_channels()
+def test_user_system_operations(test_user: User):
+    test_user.join_channel("General")
+    test_user.leave_channel("General")
+    assert "General" not in test_user.get_joined_channels()
 
 
 """ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,14 +80,19 @@ def test_registered_user_system_operations(test_registered_user: RegisteredUser)
 #     assert test_registered_user.flag is True
 
 # Level 3: Feature implementation tests
-# def test_channel_selection_operator(test_registered_user: RegisteredUser):
-#     test_registered_user += "General"  # Assuming overloaded operator works
-#     assert "General" in test_registered_user.get_joined_channels()
+def test_channel_selection_operator(test_registered_user: RegisteredUser):
+    test_registered_user += "General"  # Assuming overloaded operator works
+    assert "General" in test_registered_user.get_joined_channels()
 
 # def test_registered_user_post(test_registered_user: RegisteredUser):
+#     # Post the message to the "General" channel
 #     test_registered_user.post("Hello, world!", "General")
-#     assert "Hello, world!" in test_registered_user.get_joined_channels()
-
+    
+#     # Get the list of posts for the "General" channel
+#     posts_in_general = test_registered_user.get_channel_posts("General")
+    
+#     # Assert that the message is in the list of posts for the "General" channel
+#     assert "Hello, world!" in posts_in_general
 
 # Level 4: System tests
 def test_registered_user_system_operations(test_registered_user: RegisteredUser):

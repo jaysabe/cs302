@@ -1,6 +1,7 @@
 class Channel:
     __title = ""
-    __active_users = []  # Replaces bookmarks
+    __posts = []
+    __active_users = []
     __map = {}  # Channel lookup map
 
     def __init__(self, title: str, active_users: list[str]):
@@ -10,6 +11,12 @@ class Channel:
 
     def get_active_users(self):
         return self.__active_users
+    
+    def add_post(self, post):
+        self.__posts.append(post)
+        
+    def get_posts(self):
+        return self.__posts
     
     @classmethod
     def build(cls, data: dict) -> dict:
