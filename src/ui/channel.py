@@ -8,6 +8,9 @@ class Channel:
         self.__active_users = active_users
         self.__class__.__map[title.lower()] = self
 
+    def get_active_users(self):
+        return self.__active_users
+    
     @classmethod
     def build(cls, data: dict) -> dict:
         """
