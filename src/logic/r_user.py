@@ -1,10 +1,10 @@
 # registered user class
-from logic.user import User
-from ui.channel import Channel
+from .user import User
+from ..ui.channel import Channel
 
 class RegisteredUser(User):
-    def __init__(self, username: str, userid: int, joined_channel):
-        super().__init__(username, userid, joined_channel)
+    def __init__(self, username: str, user_id: int, joined_channels: list = None):
+        super().__init__(username, user_id, joined_channels or [])
 
     def post(self, msg: str, channel_name: str) -> None:
         """

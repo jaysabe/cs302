@@ -1,12 +1,12 @@
 # Admin class
-from logic.user import User
-from ui.channel import Channel
-from util import input_string, y_or_n, is_non_empty
+from .user import User
+from ..ui.channel import Channel
+from ..util import input_string, y_or_n, is_non_empty
 import numpy as np
 
 class Admin(User):
-    def __init__(self, username:str, user_id: int):
-        super().__init__(username, user_id)
+    def __init__(self, username:str, user_id: int, joined_channels: list):
+        super().__init__(username, user_id, joined_channels)
         self.channel_stats = np.zeros((5,2))
         self.all_channels_log = {}
     def create_channel(self):
@@ -30,7 +30,7 @@ class Admin(User):
         )
 
         new_channel = Channel(channel_name, description)
-        print(f"Channel '{new_channel.get_name()}' created successfully.")
+        print(f"Channel '{new_channel.get_title()}' created successfully.")
 
     def update_channel_stats(self, channel_name: str, user_count: int, msg_count: int):
         """

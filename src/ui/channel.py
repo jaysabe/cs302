@@ -59,6 +59,7 @@ class Channel:
     @classmethod
     def lookup(cls, title: str) -> 'Channel':
         """Looks up a channel by title."""
+        # TODO: 
         return cls.__map.get(title.lower())
 
     @staticmethod

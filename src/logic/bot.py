@@ -1,10 +1,10 @@
-from logic.user import User
+from .user import User
 import numpy as np
 from datetime import datetime
 
 class Bot(User):
-    def __init__(self, username: str, user_id: int):
-        super().__init__(username, user_id)
+    def __init__(self, username: str, user_id: int, joined_channels: list):
+        super().__init__(username, user_id, joined_channels)
         self._command_stats = np.zeros((3, 2), dtype=object)
     
     def run_script(self, script: str):
