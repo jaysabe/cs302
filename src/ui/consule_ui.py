@@ -68,10 +68,7 @@ class ConsoleUI:
                 print(f"Unknown command: {choice}")
 
 
-    # def prompt_menu():
-    #     choice = "/q"
-    #     while choice != "/q":
-    #         print("Please register to enter channel or type 'no' to cancel: ")
+
 
 
         """
