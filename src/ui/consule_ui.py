@@ -67,44 +67,6 @@ class ConsoleUI:
             else:
                 print(f"Unknown command: {choice}")
 
-
-
-
-
-        """
-        - I made consul-ui class for all inputs + calls to util file
-        - Then updated / solidified permission methods for each core hierarchy class
-        - updated bot class with other scripts
-        
-        
-        
-        Current class core:
-            - User:
-                - View topics
-                - Join channel
-                - Leave channel
-        
-            - Registered User
-                - Register 
-                - react to messages
-                - post in channel
-                - if student => ask a question script
-            
-            - Admin
-                - Create a channel
-                - Audit User (menu to interact with BST) (Requires BST check)
-                - post in channel
-            
-            -Bot 
-                - Post a Fun fact
-                - run scripts function for each role
-                - Notification of a new user + add it to the list
-        
-        ~~~~~~~~~~~~~~~~~~
-        
-        Stuff left to do:
-            - BST implementation
-            - glassbox tests
-            - check roles for each user // add a general role_set(takes a dict) that then gets sent to switch statement scripts
-        
-        """
+if __name__ == '__main__':
+    console = ConsoleUI()
+    console.main_loop()
